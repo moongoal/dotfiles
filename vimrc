@@ -10,6 +10,7 @@ set encoding=utf-8
 set ff=unix
 set noswapfile
 autocmd BufNewFile * :set ff=unix
+autocmd BufNewFile,BufReadPre,FilterReadPre,FileReadPre *.py :set cursorcolumn
 
 " Appearance settings
 set number
@@ -41,7 +42,8 @@ endif
 
 " Editing settings
 set tabstop=2 expandtab
-set autoindent smartindent
+set autoindent nosmartindent
+set backspace=indent,eol,start
 
 " Keyboard mappings
 "* TABS
