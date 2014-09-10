@@ -30,10 +30,10 @@ if has("gui_running")
   elseif has("gui_win32")
     set guifont=consolas_for_powerline_fixedd:h14
   endif
-endif
 
 execute "source " . vimdir . "/airline-config.vim"
 let g:airline_powerline_fonts=1
+endif
 
 if exists("&guicursor")
   set guicursor=n-v-ve-o-c-ci-cr-sm:block-blinkon0,i:block-blinkwait700-blinkon400-blinkoff250,r:hor20-blinkon400-blinkwait700-blinkoff250
