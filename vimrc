@@ -51,8 +51,13 @@ nmap <Tab> gt
 nmap <C-Tab> gT
 nmap <C-F4> :tabclose<CR>
 
+"* ARROWS
+imap <Up> <Nop>
+imap <Down> <Nop>
+
 "* NERDTree
 nmap <C-F1> :NERDTreeToggle<CR>
+nmap <S-F1> :NERDTreeFocus<CR>
 
 " Templates
 execute "source " . vimdir . "/templates.vim"
