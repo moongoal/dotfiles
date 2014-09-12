@@ -6,20 +6,34 @@ else
 endif
 
 " System settings
-set encoding=utf-8
+if has("multi_byte")
+  set encoding=utf-8
+  set fileencodings=utf-8
+endif
+
 set ff=unix
 set noswapfile
-autocmd BufNewFile * :set ff=unix
-autocmd BufNewFile,BufReadPre,FilterReadPre,FileReadPre *.py :set cursorcolumn
+set nocompatible
+
+if has("autocmd")
+  autocmd BufNewFile * set ff=unix
+  autocmd BufNewFile,BufReadPre,FilterReadPre,FileReadPre *.py setlocal cursorcolumn
+endif
 
 " Appearance settings
 set number
 colorscheme desert
-syntax on
 set laststatus=2
 set visualbell
-set cursorline
-set hlsearch
+
+if has("extra_search")
+  set hlsearch
+endif
+
+if has("syntax")
+  syntax on
+  set cursorline
+endif
 
 "* GUI
 if has("gui_running")
@@ -32,8 +46,8 @@ if has("gui_running")
     set guifont=consolas_for_powerline_fixedd:h14
   endif
 
-execute "source " . vimdir . "/airline-config.vim"
-let g:airline_powerline_fonts=1
+  execute "source " . vimdir . "/airline-config.vim"
+  let g:airline_powerline_fonts=1
 endif
 
 if exists("&guicursor")
@@ -44,18 +58,14 @@ endif
 set tabstop=2 expandtab
 set autoindent nosmartindent
 set backspace=indent,eol,start
+set showmatch
 
 " Keyboard mappings
-"* TABS
 nmap <Tab> gt
 nmap <C-Tab> gT
 nmap <C-F4> :tabclose<CR>
-
-"* ARROWS
 imap <Up> <Nop>
 imap <Down> <Nop>
-
-"* NERDTree
 nmap <C-F1> :NERDTreeToggle<CR>
 nmap <S-F1> :NERDTreeFocus<CR>
 
