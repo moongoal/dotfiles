@@ -11,7 +11,9 @@ if has("multi_byte")
   set fileencodings=utf-8
 endif
 
-set ff=unix
+filetype on
+filetype plugin on
+
 set noswapfile
 set nocompatible
 
@@ -66,14 +68,10 @@ nmap <C-Tab> gT
 nmap <C-F4> :tabclose<CR>
 imap <Up> <Nop>
 imap <Down> <Nop>
-nmap <C-F1> :NERDTreeToggle<CR>
-nmap <S-F1> :NERDTreeFocus<CR>
+nmap <C-F1> :VExplore<CR>
 
 " Templates
 execute "source " . vimdir . "/templates.vim"
 
 " Documentation
 execute "helptags " . vimdir . "/doc"
-
-" Configuration files
-let g:NERDTreeBookmarksFile = vimdir . "/NERDTreeBookmarks"
