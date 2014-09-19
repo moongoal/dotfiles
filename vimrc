@@ -57,7 +57,7 @@ if exists("&guicursor")
 endif
 
 " Editing settings
-set tabstop=2 expandtab
+setglobal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent nosmartindent
 set backspace=indent,eol,start
 set showmatch
