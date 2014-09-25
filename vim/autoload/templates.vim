@@ -11,7 +11,7 @@ endif
 " Inserts a template file named 'tname.txt' which is found in the
 " g:templates_directory folder.
 "
-fu! TemplateInsert(tname)
+fu! templates#TemplateInsert(tname)
   let fname=g:templates_directory . "/" . a:tname . ".txt"
 
   if filereadable(fname)
@@ -20,5 +20,3 @@ fu! TemplateInsert(tname)
     echoerr "Unkown template file " . fname
   endif
 endfunction
-
-command -nargs=1 TemplateInsert :call TemplateInsert(<f-args>)

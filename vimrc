@@ -19,7 +19,7 @@ set nocompatible
 
 if has("autocmd")
   autocmd BufNewFile * set ff=unix
-  autocmd BufNewFile,BufReadPre,FilterReadPre,FileReadPre *.py setlocal cursorcolumn
+  autocmd BufNewFile,BufReadPost,FilterReadPost,FileReadPost *.py setlocal cursorcolumn tabstop=2 softtabstop=2
 endif
 
 " Appearance settings
@@ -82,3 +82,5 @@ nmap <C-F4> :tabclose<CR>
 imap <Up> <Nop>
 imap <Down> <Nop>
 nmap <C-F1> :VExplore<CR>
+
+command -nargs=1 TemplateInsert :call templates#TemplateInsert(<f-args>)
