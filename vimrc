@@ -81,4 +81,4 @@ nmap <C-Tab> gT
 nmap <C-F4> :tabclose<CR>
 imap <Up> <Nop>
 imap <Down> <Nop>
-nmap <C-F1> :VExplore<CR>
+nmap <C-F1> :Vexplore<CR>
