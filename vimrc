@@ -23,8 +23,8 @@ if has("autocmd")
 endif
 
 " Appearance settings
-set number
 colorscheme desert
+set number
 set laststatus=2
 set visualbell
 
@@ -37,6 +37,22 @@ if has("syntax")
   set cursorline
 endif
 
+if has("statusline")
+  set statusline=%m\ %02n\ %-32t\ %W%Y%=%(%{StatusBar_GetTime()}\ %)%(%q\ %)%c,%l%(\ [0x%02.4B]%)\ %p%%
+endif
+
+if has("title")
+  set titlestring=%(%f\ -\ %)VIM
+endif
+
+if has("windows")
+  hi TabLine term=NONE cterm=NONE gui=NONE ctermfg=grey ctermbg=233 guibg=#333333 guifg=grey
+  hi TabLineSel term=bold cterm=bold gui=bold ctermfg=50 ctermbg=22 guifg=#11E5F0 guibg=#0E7D24
+  hi TabLineFill ctermfg=darkgray guifg=darkgray
+
+  set tabline=%!TabLine_TabLine()
+endif
+
 "* GUI
 if has("gui_running")
   set lines=36 columns=156
@@ -47,9 +63,6 @@ if has("gui_running")
   elseif has("gui_win32")
     set guifont=consolas_for_powerline_fixedd:h14
   endif
-
-  execute "source " . vimdir . "/airline-config.vim"
-  let g:airline_powerline_fonts=1
 endif
 
 if exists("&guicursor")
@@ -69,9 +82,3 @@ nmap <C-F4> :tabclose<CR>
 imap <Up> <Nop>
 imap <Down> <Nop>
 nmap <C-F1> :VExplore<CR>
-
-" Templates
-execute "source " . vimdir . "/templates.vim"
-
-" Documentation
-execute "helptags " . vimdir . "/doc"
