@@ -57,7 +57,8 @@ endif
 if has("gui_running")
   set lines=36 columns=156
   set guioptions=
-  
+  set clipboard=unnamed,autoselect
+
   if has("gui_gtk")
     set guifont=Inconsolata\ 14
   elseif has("gui_win32")
