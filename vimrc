@@ -16,6 +16,7 @@ filetype plugin on
 
 set noswapfile
 set nocompatible
+set mouse=
 
 if has("autocmd")
   autocmd BufNewFile * set ff=unix
