@@ -11,6 +11,8 @@ if has("multi_byte")
   set fileencodings=utf-8
 endif
 
+set fileformats=unix,dos
+
 filetype on
 filetype plugin on
 
