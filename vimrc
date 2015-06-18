@@ -16,6 +16,7 @@ set fileformats=unix,dos
 filetype on
 filetype plugin on
 
+set scrolloff=8
 set noswapfile
 set nocompatible
 set mouse=
