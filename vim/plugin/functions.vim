@@ -28,13 +28,16 @@ fu! TabLine_TabLine()
 endf
 
 fu! TabLine_TabElement(tabpagenr)
-  let fname = fnamemodify(bufname(tabpagebuflist(a:tabpagenr)[tabpagewinnr(a:tabpagenr) - 1]), ":t")
-  let label = ""
+  let bname = bufname(tabpagebuflist(a:tabpagenr)[tabpagewinnr(a:tabpagenr) - 1])
+  let fname = fnamemodify(bname, ":t")
+  let modified = getbufvar(bname, "&mod")
+  let delim_start = modified? '{': '['
+  let delim_end = modified? '}': ']'
 
   if strlen(fname) == 0
     let label = "[Buffer " . a:tabpagenr . "]"
   else
-    let label = fname
+    let label = delim_start . fname . delim_end
   endif
 
   return label
