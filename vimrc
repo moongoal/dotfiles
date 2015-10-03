@@ -43,7 +43,7 @@ if has("syntax")
 endif
 
 if has("statusline")
-  set statusline=%m\ %02n\ %-32t\ %W%Y%=%(%{StatusBar_GetTime()}\ %)%(%q\ %)%c,%l%(\ [0x%02.4B]%)\ %p%%
+  set statusline=%m\ %02n\ %-32t\ %W%Y(%{&fileformat}:%{&fileencoding})%=%(%{StatusBar_GetTime()}\ %)%(%q\ %)%c,%l%(\ [0x%02.4B]%)\ %p%%
 endif
 
 if has("title")
