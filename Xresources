@@ -1,0 +1,5 @@
+Rxvt.geometry: 160x48
+Rxvt.background: Black
+Rxvt.foreground: Grey
+Rxvt.cursorColor: Green
+Rxvt.scrollBar: False
