@@ -68,16 +68,14 @@ bindsym $mod+Shift+c reload
 
 # X session commands
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit X session? ' -b 'Yes' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "~/.i3/quit.sh"
 
 mode "resize" {
-        # same bindings, but for the arrow keys
         bindsym h resize grow width 10 px or 10 ppt
         bindsym Shift+h resize shrink width 10 px or 10 ppt
         bindsym v resize grow height 10 px or 10 ppt
         bindsym Shift+v resize shrink height 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
         bindsym Escape mode "default"
 }
 
