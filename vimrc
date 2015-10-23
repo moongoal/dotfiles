@@ -7,7 +7,7 @@ set foldenable
 
 if has("autocmd")
   autocmd BufNewFile * set ff=unix
-  autocmd BufNewFile,BufReadPost,FilterReadPost,FileReadPost *.py setlocal cursorcolumn tabstop=2 softtabstop=2
+  autocmd BufNewFile,BufReadPost,FilterReadPost,FileReadPost *.py,*.pyw setlocal cursorcolumn tabstop=2 softtabstop=2
 endif
 " }}}
 " Encodings and formats {{{
@@ -20,7 +20,7 @@ endif
 set fileformats=unix,dos
 
 filetype on
-filetype plugin on
+filetype plugin off
 " }}}
 " Windows specific settings {{{
 " Set vim home dir
