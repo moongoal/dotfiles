@@ -35,14 +35,21 @@ function exit_error {
 
 SKIP=""; [[ "$1" == "-n" ]] && SKIP="yes"
 
+[[ -n "$SKIP" ]] && echo SKIP
+exit
 cd "$(dirname $0)"
 
 for k in "${!FILES[@]}"; do # k: packaged file
   v="$(resolve_file_path "${FILES[$k]}")" # v: destination file
 
   if [[ ! -f "$v" ]]; then # Destination file does not exist
-    echo "Destination file $v does not exist"
-    continue
+    echo "Creating file ${v}..."
+    if [[ -f "$k" ]]; then # Packaged file exists
+      [[ -n $SKIP ]] && install -T "$k" "$v"
+    else
+      echo "WARNING: Packaged file $k does not exist" >&2
+      continue;
+    fi
   fi
 
   # t_k, t_v: last modification time of k and v
