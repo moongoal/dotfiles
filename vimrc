@@ -7,7 +7,8 @@ set foldenable
 
 if has("autocmd")
   autocmd BufNewFile * set ff=unix
-  autocmd BufNewFile,BufReadPost,FilterReadPost,FileReadPost *.py,*.pyw setlocal cursorcolumn tabstop=2 softtabstop=2
+  autocmd BufNewFile,BufReadPost *.py,*.pyw setlocal cursorcolumn tabstop=2 softtabstop=2
+	autocmd BufNewFile,BufReadPost Makefile,Makefile.* setlocal noexpandtab
 endif
 " }}}
 " Encodings and formats {{{
