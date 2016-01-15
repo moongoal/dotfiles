@@ -10,7 +10,7 @@ exec_always --no-startup-id ~/.i3/setbg.sh
 # Applications
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+d exec dmenu_run
-bindsym $mod+l exec i3lock -e -f -i ~/.i3/lockscreen.png
+bindsym $mod+l exec ~/.i3/lockscreen.sh
 bindsym $mod+m exec "i3-sensible-terminal -e  alsamixer"
 
 # Window keys
