@@ -8,7 +8,7 @@
 
 declare -A FILES
 
-# ["packaged/file/path"] = "destination/path"
+# ["packaged/file/path"]="destination/path"
 FILES[vimrc]="~/.vimrc"
 FILES[Xresources]="~/.Xresources"
 FILES["vim/templates/html.txt"]="~/.vim/templates/html.txt"
@@ -17,6 +17,7 @@ FILES["vim/plugin/functions.vim"]="~/.vim/plugin/functions.vim"
 FILES["i3/quit.sh"]="~/.i3/quit.sh"
 FILES["i3/setbg.sh"]="~/.i3/setbg.sh"
 FILES["i3/config"]="~/.i3/config"
+FILES["i3/lockscreen.sh"]="~/.i3/lockscreen.sh"
 
 function resolve_file_path {
   # resolve_file_path(file_path)
