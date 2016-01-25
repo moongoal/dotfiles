@@ -17,6 +17,7 @@ FILES["vim/plugin/functions.vim"]="~/.vim/plugin/functions.vim"
 FILES["i3/quit.sh"]="~/.i3/quit.sh"
 FILES["i3/setbg.sh"]="~/.i3/setbg.sh"
 FILES["i3/config"]="~/.i3/config"
+FILES["i3/screenshot.sh"]="~/.i3/screenshot.sh"
 FILES["i3/lockscreen.sh"]="~/.i3/lockscreen.sh"
 
 function resolve_file_path {
