@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # USAGE
 #  install.sh [-n]
@@ -38,7 +38,7 @@ function exit_error {
 SKIP=""; [[ "$1" == "-n" ]] && SKIP="yes"
 
 [[ -n "$SKIP" ]] && echo SKIP
-exit
+
 cd "$(dirname $0)"
 
 for k in "${!FILES[@]}"; do # k: packaged file
@@ -47,28 +47,28 @@ for k in "${!FILES[@]}"; do # k: packaged file
   if [[ ! -f "$v" ]]; then # Destination file does not exist
     echo "Creating file ${v}..."
     if [[ -f "$k" ]]; then # Packaged file exists
-      [[ -n $SKIP ]] && install -T "$k" "$v"
+      [[ -z $SKIP ]] && install -D -T "$k" "$v"
     else
       echo "WARNING: Packaged file $k does not exist" >&2
       continue;
     fi
-  fi
+  else # Destination file exists
+    # t_k, t_v: last modification time of k and v
+    t_k=$(stat --format=%Y "$k")
+    t_v=$(stat --format=%Y "$v")
 
-  # t_k, t_v: last modification time of k and v
-  t_k=$(stat --format=%Y "$k")
-  t_v=$(stat --format=%Y "$v")
+    [[ $t_k -eq $t_v ]] && continue; # Files have the same date
 
-  [[ $t_k -eq $t_v ]] && continue; # Files have the same date
-
-  if [[ $t_k -gt $t_v ]]; then # packaged file is newer than destination file
-    if ! diff -q "$k" "$v" >/dev/null; then
-      echo "Updating file ${v}..."
-      [[ -n $SKIP ]] && install -T "$k" "$v" || exit_error "Couldn't update file $v"
-    fi
-  else # packaged file is older than destination file
-    if ! diff -q "$k" "$v" >/dev/null; then
-      echo "Updating file ${k}..."
-      [[ -n $SKIP ]] && install -T "$v" "$k" || exit_error "Couldn't update file $k"
+    if [[ $t_k -gt $t_v ]]; then # packaged file is newer than destination file
+      if ! diff -q "$k" "$v" >/dev/null; then
+        echo "Updating file ${v}..."
+        [[ -n $SKIP ]] && install -T "$k" "$v" || exit_error "Couldn't update file $v"
+      fi
+    else # packaged file is older than destination file
+      if ! diff -q "$k" "$v" >/dev/null; then
+        echo "Updating file ${k}..."
+        [[ -n $SKIP ]] && install -T "$v" "$k" || exit_error "Couldn't update file $k"
+      fi
     fi
   fi
 done
