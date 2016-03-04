@@ -2,4 +2,4 @@
 
 FEHBG=~/.fehbg
 
-[[ -f "$FEHBG" ]] && exec $FEHBG
+[[ -f "$FEHBG" ]] && exec /bin/bash $FEHBG
