@@ -4,7 +4,7 @@ SCREEN_STANDBY_TIME=30
 SCREEN_SUSPEND_TIME=180
 SCREEN_OFF_TIME=600
 LOCK_IMAGE=~/.i3/lockscreen.png
-OPTIONS="-e -f -n"
+OPTIONS="-e -n"
 
 XSET_OUT="$(xset q)"
 

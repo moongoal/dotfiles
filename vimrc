@@ -60,12 +60,17 @@ endif
 if has("gui_running")
   set lines=36 columns=156
   set guioptions=
-  set clipboard=unnamed,autoselect
 
-  if has("gui_gtk")
-    set guifont=Inconsolata\ 14
-  elseif has("gui_win32")
+  if has("unnamedplus")
+    set clipboard=unnamed,unnamedplus,autoselect
+  else
+    set clipboard=unnamed,autoselect
+  endif
+
+  if has("gui_win32")
     set guifont=consolas_for_powerline_fixedd:h14
+  else
+    set guifont=Inconsolata\ 14
   endif
 endif
 
