@@ -63,8 +63,8 @@ function exit_error {
 }
 
 function print_help {
-  echo -e "dotfiles installer\n\n"
-  echo -e "Usage: install.sh\n\t[-i | --install]\n\t[-c | --collect]\n\t[-k | --check]\n\t[-h | --help]\n\n"
+  echo -e "dotfiles installer\n"
+  echo -e "Usage: install.sh\n\t[-i | --install]\n\t[-c | --collect]\n\t[-k | --check]\n\t[-h | --help]\n"
 
   echo "-i | --install: Install files to the system"
   echo "-c | --collect: Collect files from the system"

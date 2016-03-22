@@ -3,4 +3,4 @@ Rxvt.background: Black
 Rxvt.foreground: Grey
 Rxvt.cursorColor: Green
 Rxvt.scrollBar: False
-Rxvt.font: -*-lucidatypewriter-bold-*-*-*-*-120-*-*-*-*-iso8859-*
+Rxvt.font: -*-lucidatypewriter-bold-*-*-*-12-120-*-*-*-*-iso8859-*
