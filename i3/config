@@ -7,6 +7,11 @@ floating_modifier $mod
 # Startup applications
 exec_always --no-startup-id ~/.i3/setbg.sh
 
+# Colors
+# class        border  backgr. text    indicator child_border
+client.focused #D28A47 #944E0E #FFFFFF #F8F4B0D #D38A47
+client.background #000000
+
 # Applications
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+d exec dmenu_run
