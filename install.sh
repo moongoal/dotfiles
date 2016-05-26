@@ -11,6 +11,7 @@ declare -A FILES
 # ["packaged_file_path"]="file_mode|destination_path"
 FILES[vimrc]="644|~/.vimrc"
 FILES[Xresources]="644|~/.Xresources"
+FILES["config/compton.conf"]="644|~/.config/compton.conf"
 FILES["vim/templates/html.txt"]="644|~/.vim/templates/html.txt"
 FILES["vim/autoload/templates.vim"]="644|~/.vim/autoload/templates.vim"
 FILES["vim/plugin/functions.vim"]="644|~/.vim/plugin/functions.vim"
@@ -19,6 +20,7 @@ FILES["i3/setbg.sh"]="744|~/.i3/setbg.sh"
 FILES["i3/config"]="644|~/.i3/config"
 FILES["i3/screenshot.sh"]="744|~/.i3/screenshot.sh"
 FILES["i3/lockscreen.sh"]="744|~/.i3/lockscreen.sh"
+FILES["i3/composite.sh"]="744|~/.i3/composite.sh"
 
 # Execution mode
 #   VALUES

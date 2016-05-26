@@ -6,6 +6,7 @@ floating_modifier $mod
 
 # Startup applications
 exec_always --no-startup-id ~/.i3/setbg.sh
+exec_always --no-startup-id "~/.i3/composite.sh on"
 
 # Colors
 # class        border  backgr. text    indicator child_border

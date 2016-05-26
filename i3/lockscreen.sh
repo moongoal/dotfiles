@@ -12,8 +12,10 @@ grep DPMS <<<"$XSET_OUT" | tail -n 1 | grep -q Enabled && DPMS_ENABLED=1 || DPMS
 [[ $DPMS_ENABLED -ne 0 ]] && DPMS_VALUES=($(xset q | grep Standby | awk '//{ print $2, $4, $6; }'))
 [[ -f $LOCK_IMAGE ]] && OPTIONS="$OPTIONS -i $LOCK_IMAGE"
 
+~/.i3/composite.sh off
 xset dpms $SCREEN_STANDBY_TIME $SCREEN_SUSPEND_TIME $SCREEN_OFF_TIME
 i3lock $OPTIONS
 xset dpms ${DPMS_VALUES[@]}
+~/.i3/composite.sh on
 
 [[ $DPMS_ENABLED -eq 0 ]] && xset -dpms
