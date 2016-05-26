@@ -4,3 +4,6 @@ Rxvt.foreground: Grey
 Rxvt.cursorColor: Green
 Rxvt.scrollBar: False
 Rxvt.font: -*-fixed-*-r-*-*-14-*-100-100-*-*-iso8859-*
+Rxvt.transparent: True
+Rxvt.inheritPixmap: True
+Rxvt.shading: 10
