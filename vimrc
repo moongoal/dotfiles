@@ -9,6 +9,7 @@ if has("autocmd")
   autocmd BufNewFile * set ff=unix
   autocmd BufNewFile,BufReadPost *.py,*.pyw setlocal cursorcolumn tabstop=2 softtabstop=2
 	autocmd BufNewFile,BufReadPost Makefile,Makefile.*,*.makefile,*.mk setlocal noexpandtab
+  autocmd BufNewFile,BufReadPost *.eml setlocal fileformat=dos
 endif
 " }}}
 " Encodings and formats {{{
