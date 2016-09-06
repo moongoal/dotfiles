@@ -10,8 +10,8 @@ exec_always --no-startup-id "~/.i3/composite.sh on"
 
 # Colors
 # class        border  backgr. text    indicator child_border
-client.focused #D28A47 #944E0E #FFFFFF #F8F4B0D #D38A47
-client.background #000000
+#client.focused #D28A47 #944E0E #FFFFFF #F8F4B0D #D38A47
+#client.background #000000
 
 # Applications
 bindsym $mod+Return exec i3-sensible-terminal
@@ -125,3 +125,7 @@ workspace_auto_back_and_forth yes
 
 # Urgency hint
 force_display_urgency_hint 500 ms
+
+# Other stuff
+hide_edge_borders both
+show_marks yes
