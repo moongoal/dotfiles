@@ -33,7 +33,7 @@ else
 endif
 " }}}
 " UI {{{
-colorscheme desert
+colorscheme slate
 set number
 set laststatus=2
 set visualbell
