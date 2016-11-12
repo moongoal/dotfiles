@@ -33,7 +33,7 @@ else
 endif
 " }}}
 " UI {{{
-colorscheme slate
+colorscheme elflord
 set number
 set laststatus=2
 set visualbell
@@ -47,6 +47,7 @@ endif
 if has("syntax")
   syntax on
   set cursorline
+  highlight CursorLine gui=NONE guibg=#222222 term=NONE ctermbg=Black ctermfg=NONE cterm=NONE term=NONE
 endif
 
 if has("windows")
@@ -73,6 +74,8 @@ if has("gui_running")
   else
     set guifont=Inconsolata\ 14
   endif
+
+  hi Cursor guibg=Lime guifg=Red gui=NONE ctermbg=Green ctermfg=Red cterm=NONE
 endif
 
 if exists("&guicursor")
