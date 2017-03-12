@@ -17,7 +17,8 @@ exec_always --no-startup-id "~/.i3/composite.sh on"
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+d exec dmenu_run
 bindsym $mod+l exec ~/.i3/lockscreen.sh
-bindsym $mod+m exec "i3-sensible-terminal -e  alsamixer"
+
+# Screenshots
 bindsym --release $mod+Print exec --no-startup-id "~/.i3/screenshot.sh screen"
 bindsym --release $mod+Shift+Print exec --no-startup-id "~/.i3/screenshot.sh window"
 
@@ -103,6 +104,15 @@ bindsym $mod+Shift+F12 mode "no-bindings"
 bindsym $mod+minus scratchpad show
 bindsym $mod+Shift+minus move scratchpad
 
+# Volume keys
+bindsym $mod+m exec "i3-sensible-terminal -e  alsamixer"
+bindsym $mod+Shift+m exec --no-startup-id "amixer -q set Master toggle"
+bindsym $mod+KP_Add exec --no-startup-id "~/.i3/volume.sh '10%+'"
+bindsym $mod+KP_Subtract exec --no-startup-id "~/.i3/volume.sh '10%-'"
+bindsym $mod+Shift+KP_Add exec --no-startup-id "~/.i3/volume.sh '100%'"
+bindsym $mod+Shift+KP_Subtract exec --no-startup-id "~/.i3/volume.sh '0%'"
+
+# Status bar
 bar {
         status_command i3status
         mode hide
