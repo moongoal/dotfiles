@@ -42,3 +42,7 @@ if os.path.exists(todolist):
   )
 
   sys.exit(sp.returncode)
+else: # No TODO list existing; Copy input to output
+  import shutil
+
+  shutil.copyfile(bg, outimg)
