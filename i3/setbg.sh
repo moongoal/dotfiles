@@ -1,5 +1,5 @@
 #!/bin/bash
 
-FEHBG=~/.fehbg
+BGIMG="/tmp/_i3-background.png"
 
-[[ -f "$FEHBG" ]] && exec /bin/bash $FEHBG
+~/.i3/todo.py "$BGIMG" && feh --no-fehbg --bg-fill "$BGIMG"
