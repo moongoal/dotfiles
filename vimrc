@@ -1,111 +1,110 @@
-" General {{{
-set noswapfile
-set nocompatible
-set modelines=1
-set modeline
-set foldenable
+" vim: foldmethod=marker
+colorscheme evening
 
-if has("autocmd")
-  autocmd BufNewFile * set ff=unix
-  autocmd BufNewFile,BufReadPost *.py,*.pyw setlocal cursorcolumn tabstop=2 softtabstop=2
-	autocmd BufNewFile,BufReadPost Makefile,Makefile.*,*.makefile,*.mk setlocal noexpandtab
-  autocmd BufNewFile,BufReadPost *.eml setlocal fileformat=dos
-endif
-" }}}
-" Encodings and formats {{{
-if has("multi_byte")
-  set encoding=utf-8
-  set fileencoding=utf-8
-  set fileencodings=utf-8
-endif
-
-set fileformats=unix,dos
-
-filetype on
-filetype plugin off
-" }}}
-" Windows specific settings {{{
-" Set vim home dir
-if has("win32")
-  let vimdir = $HOME . "/vimfiles"
-else
-  let vimdir = $HOME . "/.vim"
-endif
-" }}}
-" UI {{{
-colorscheme elflord
+set nocp
+set matchpairs
 set number
-set laststatus=2
-set visualbell
-set mouse=
-set scrolloff=8
+set ruler
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set guicursor=a:block,i:blinkon500-blinkoff500-blinkwait500
+set cursorline
+set cursorcolumn
+set ffs=unix,dos
 
-if has("extra_search")
-  set hlsearch
-endif
+filetype plugin on
 
-if has("syntax")
-  syntax on
-  set cursorline
-  highlight CursorLine gui=NONE guibg=#222222 term=NONE ctermbg=Black ctermfg=NONE cterm=NONE term=NONE
-endif
+noremap <TAB> :tabnext<CR>
+noremap <C-TAB> :tabprevious<CR>
 
-if has("windows")
-  hi TabLine term=NONE cterm=NONE gui=NONE ctermfg=grey ctermbg=233 guibg=#333333 guifg=grey
-  hi TabLineSel term=bold cterm=bold gui=bold ctermfg=50 ctermbg=22 guifg=#11E5F0 guibg=#0E7D24
-  hi TabLineFill ctermfg=darkgray guifg=darkgray
+" Fonts {{{1
+let s:fontsize = 14
+let s:fontface = "Consolas"
 
-  set tabline=%!TabLine_TabLine()
-endif
+function! AdjustFontSize(size_incr)
+    let s:fontsize = s:fontsize + a:size_incr
+    execute "set guifont=" . s:fontface . ":h" . s:fontsize
+endfunction
 
-" GUI {{{
-if has("gui_running")
-  set lines=36 columns=156
-  set guioptions=
+call AdjustFontSize(0)
 
-  if has("unnamedplus")
-    set clipboard=unnamed,unnamedplus,autoselect
-  else
-    set clipboard=unnamed,autoselect
-  endif
+noremap <kPlus> :call AdjustFontSize(1)<CR>
+noremap <kMinus> :call AdjustFontSize(-1)<CR>
 
-  if has("gui_win32")
-    set guifont=consolas_for_powerline_fixedd:h14
-  else
-    set guifont=Inconsolata\ 14
-  endif
+" Auto commands {{{1
+" autocmd BufNewFile,BufRead,BufEnter *.cpp,*.hpp setl autochdir
+function! SwitchToHeader(fname, cmd)
+    let extension = fnamemodify(a:fname, ":e")
+    let header_fname = fnamemodify(a:fname, ":p:r")
 
-  hi Cursor guibg=Lime guifg=Red gui=NONE ctermbg=Green ctermfg=Red cterm=NONE
-endif
+    if extension == "hpp"
+        let header_fname .= ".cpp"
+    else
+        let header_fname .= ".hpp"
+    endif
 
-if exists("&guicursor")
-  set guicursor=n-v-ve-o-c-ci-cr-sm:block-blinkon0,i:block-blinkwait700-blinkon400-blinkoff250,r:hor20-blinkon400-blinkwait700-blinkoff250
-endif
+    :execute ':' . a:cmd . ' ' . header_fname
+endfunction
 
-if has("statusline")
-  set statusline=%m\ %02n\ %-32t\ %W%Y(%{&fileformat}:%{&fileencoding})%=%(%{StatusBar_GetTime()}\ %)%(%q\ %)%c,%l%(\ [0x%02.4B]%)\ %p%%
-endif
+autocmd BufNewFile,BufRead,BufEnter *.cpp,*.hpp nnoremap  :call SwitchToHeader(expand("%"), "e")<CR>
+autocmd BufNewFile,BufRead,BufEnter *.cpp,*.hpp nnoremap <M-s> :call SwitchToHeader(expand("%"), "vsplit")<CR>
 
-if has("title")
-  set titlestring=%(%f\ -\ %)VIM
-endif
-" }}}
-" }}}
-" Editing settings {{{
-set tabstop=2 softtabstop=2 expandtab
-set autoindent nosmartindent
-set backspace=indent,eol,start
-set showmatch
-" }}}
-" Keyboard mappings {{{
-nmap <Tab> gt
-nmap <C-Tab> gT
-nmap <C-F4> :tabclose<CR>
-imap <Up> <Nop>
-imap <Down> <Nop>
-nmap <C-F1> :Vexplore<CR>
-" }}}
-" Templates {{{
-command -nargs=1 TemplateInsert :call templates#TemplateInsert(<f-args>)
-" }}}
-" vim: foldmethod=marker:foldlevel=0
+
+" Tab line {{{1
+function! QTabLine()
+    let cur_tab_i = tabpagenr()
+    let t = ''
+
+    for i in range(tabpagenr('$'))
+        if i + 1 == cur_tab_i
+            let t .= '%#TabLineSel#'
+        else
+            let t .= '%#TabLine#'
+        endif
+
+        let t .= '%' . (i + 1) . 'T'
+        let t .= ' %{QTabLabel(' . (i + 1) . ')} '
+    endfor
+
+    let t .= '%T%#TabLineFill#%= :: %{bufname("%")} '
+
+    return t
+endfunction
+
+function! QTabLabel(tab_idx)
+    let buflist = tabpagebuflist(a:tab_idx)
+    let win_idx = tabpagewinnr(a:tab_idx)
+    let buf = buflist[win_idx - 1]
+    let bufinfo = getbufinfo(buf)[0]
+    let fname = fnamemodify(bufname(buf), ':t')
+
+    if bufinfo['changed']
+        let lbefore = '* '
+        let lend = ' *'
+    else
+        let lbefore = '[ '
+        let lend = ' ]'
+    endif
+
+    let label = lbefore . fname . lend
+
+    return label
+endfunction
+
+:set tabline=%!QTabLine()
+
+" Status line {{{1
+function! QStatusLine()
+    let s = '%( %y %m %r %w %q %) %t %= %( %l,%c(0x%B) %p%% %)'
+
+    if exists("*strftime")
+        let time = strftime("%H:%M")
+        let s .= ' :: ' . time
+    endif
+
+    return s
+endfunction
+
+:set statusline=%!QStatusLine()
