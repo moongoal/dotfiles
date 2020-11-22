@@ -4,3 +4,6 @@
 [submodule "vim/pack/ide/opt/vim-lsp"]
 	path = vim/pack/ide/opt/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp
+[submodule "vim/pack/ide/opt/emmet-vim"]
+	path = vim/pack/ide/opt/emmet-vim
+	url = github.com:mattn/emmet-vim.git

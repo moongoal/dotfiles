@@ -45,6 +45,7 @@ set ssop=folds,globals,localoptions,resize,sesdir,slash,tabpages,terminal,unix
 filetype plugin on
 packadd! async
 packadd vim-lsp
+packadd emmet-vim
 
 " Additional configs
 runtime! config/**/*.vim
