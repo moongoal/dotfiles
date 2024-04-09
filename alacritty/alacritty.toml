@@ -1,0 +1,29 @@
+working_directory = "D:/Users/moongoal/Documents/src"
+
+[bell]
+animation = "EaseOutExpo"
+duration = 50
+
+[font]
+size = 14
+
+[font.normal]
+family = "Fira Code"
+
+[mouse]
+hide_when_typing = true
+
+[shell]
+program = "pwsh"
+
+[window]
+dynamic_title = true
+opacity = 0.95
+
+[window.dimensions]
+columns = 160
+lines = 40
+
+[window.position]
+x = 40
+y = 60
