@@ -1,7 +1,7 @@
 [Midnight-Commander]
 verbose=true
 shell_patterns=true
-auto_save_setup=true
+auto_save_setup=false
 preallocate_space=false
 auto_menu=false
 use_internal_view=true
@@ -103,6 +103,8 @@ horizontal_split=false
 vertical_equal=true
 horizontal_equal=true
 
+command_view=true
+
 [Misc]
 timeformat_recent=%b %e %H:%M
 timeformat_old=%b %e  %Y
@@ -150,7 +152,7 @@ left=key_escape
 right=key_escape
 
 [Panelize]
-Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
-Find rejects after patching=find . -name \\*.rej -print
-Find *.orig after patching=find . -name \\*.orig -print
 Modified git files=git ls-files --modified
+Find *.orig after patching=find . -name \\*.orig -print
+Find rejects after patching=find . -name \\*.rej -print
+Find SUID and SGID programs=find . \\( \\( -perm -04000 -a -perm /011 \\) -o \\( -perm -02000 -a -perm /01 \\) \\) -print
