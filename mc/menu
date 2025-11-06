@@ -78,3 +78,7 @@ R       Copy files to remote host (no error checking)
 c       Clone git repository
         REPO=%{Repository}
         git clone "$REPO"
+
+=+ t r & f \.tar\.(gz|xz)$
+x       Extract
+        tar -xvf %f
