@@ -82,3 +82,6 @@ c       Clone git repository
 =+ t r & f \.tar\.(gz|xz)$
 x       Extract
         tar -xvf %f
+
+t       Generate ctags
+        ctags -R --exclude=build
